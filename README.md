@@ -8,7 +8,7 @@ Para iniciar a aplicação e o banco de dados, execute o seguinte comando no dir
   ```
   docker compose up --build
   ```
-  **ou** para versões de Docker ^2.x
+  **ou** para versões de Docker inferiores a 2.x
   ```
   docker-compose up --build
   ```
