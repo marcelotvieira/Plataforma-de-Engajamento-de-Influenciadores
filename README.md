@@ -6,8 +6,13 @@ Esta plataforma conecta marcas e influenciadores. A API oferece funcionalidades 
 ### 1. **Executando a Aplicação**
 Para iniciar a aplicação e o banco de dados, execute o seguinte comando no diretório raiz do projeto:
   ```
+  docker compose up --build
+  ```
+  **ou** para versões de Docker ^2.x
+  ```
   docker-compose up --build
   ```
+
   Este comando irá construir a imagem da aplicação, iniciar o contêiner do banco de dados e conectar ambos os serviços. A aplicação estará disponível em `http://localhost:3000`.
 
 
