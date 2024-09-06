@@ -1,0 +1,63 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL_NON_POOLING")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+model User {
+  id    String @id @default(cuid())
+  nome  String
+  email String @unique
+  senha String
+}
+
+model Address {
+  id          String       @id @default(cuid())
+  cep         String
+  logradouro  String
+  complemento String?
+  unidade     String
+  bairro      String
+  localidade  String
+  uf          String
+  ibge        String?
+  gia         String?
+  ddd         String?
+  siafi       String?
+  Influencer  Influencer[]
+}
+
+model Influencer {
+  id                   String             @id @default(cuid())
+  nome                 String
+  nicho                InfluencerCategory @relation(fields: [influencerCategoryId], references: [id])
+  email                String             @default("")
+  alcance              Int
+  following            Int                @default(0)
+  foto                 String?
+  usernameInstagram    String
+  endereco             Address            @relation(fields: [addressId], references: [id])
+  addressId            String
+  influencerCategoryId String
+  brands               Brand[]            @relation("InfluencerBrands")
+}
+
+model InfluencerCategory {
+  id         String       @id @default(cuid())
+  nome       String       @unique
+  Influencer Influencer[]
+  Brand      Brand[]
+}
+
+model Brand {
+  id                   String             @id @default(cuid())
+  nome                 String             @unique
+  descricao            String?
+  nicho                InfluencerCategory @relation(fields: [influencerCategoryId], references: [id])
+  influencerCategoryId String
+  influencers          Influencer[]       @relation("InfluencerBrands")
+}
