@@ -1,4 +1,4 @@
-# Documentação da API
+# Plataforma de engajamento de influenciadores @metropole4
 
 ## Visão Geral
 Esta plataforma conecta marcas e influenciadores. A API oferece funcionalidades para registro de usuários, gerenciamento de marcas e influenciadores, além de categorias para influenciadores.
@@ -101,6 +101,8 @@ A aplicação foi construída encima do layout pré definido, houveram algumas p
 Inicialmente utilizei SASS, migrei para o tailwind posteriormente pela melhor compatibilidade com o Shadcn UI, o SASS foi retirado por não haver mais necessidade.
 
 **Valores HSL de cores foram extraídas das images e podem não corresponder exatamente.**
+
+# Documentação da API
 
 ## Rotas da API
 
