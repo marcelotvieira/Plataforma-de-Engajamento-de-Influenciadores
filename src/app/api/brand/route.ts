@@ -10,12 +10,14 @@ export async function GET(req: NextRequest) {
     const page = req.nextUrl.searchParams.get("page") || "1";
     const take = req.nextUrl.searchParams.get("take") || "14";
     const search = req.nextUrl.searchParams.get("search") || "";
+    const nicho = req.nextUrl.searchParams.get("nicho") || undefined;
     const brands = await prisma.brand.findMany({
       where: {
         nome: {
           contains: search,
           mode: 'insensitive',
         },
+        nicho: { id: nicho }
       },
       skip: (Number(page) - 1) * Number(take),
       take: Number(take),
