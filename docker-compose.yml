@@ -14,7 +14,7 @@ services:
     environment:
       - NODE_ENV=production
       - POSTGRES_URL_NON_POOLING=postgresql://johndoe:devPassword@db:5432/metropole4_db
-    command: sh -c "npx prisma migrate deploy && npm run build && npm run start"
+    command: sh -c "npx prisma migrate deploy && npx prisma generate && npm run build && npm run start"
     depends_on:
       - db
 
